@@ -7,6 +7,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Heart, MessageSquare, MoreHorizontal, CheckCircle2, Search, Plus, X, Reply, Trash2, ArrowUpDown } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent
+} from '@/components/ui/card'
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
