@@ -168,7 +168,7 @@ export default function Page() {
   })
   const [likedComments, setLikedComments] = useState<Set<number>>(new Set())
 
-  const handleCommentLike = (commentId: number) => {
+const handleCommentLike = (commentId: number) => {
     setLikedComments(prev => {
       const newLikedComments = new Set(prev)
       if (newLikedComments.has(commentId)) {
@@ -182,15 +182,18 @@ export default function Page() {
     setComments(prev => {
       const updatedComments = { ...prev }
       Object.keys(updatedComments).forEach(topicId => {
-        updatedComments[topicId] = updatedComments[topicId].map(comment => {
-          if (comment.id === commentId) {
-            return {
-              ...comment,
-              likes: comment.likes + (likedComments.has(commentId) ? -1 : 1)
+        const numericTopicId = parseInt(topicId)
+        if (updatedComments[numericTopicId]) {
+          updatedComments[numericTopicId] = updatedComments[numericTopicId].map(comment => {
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                likes: comment.likes + (likedComments.has(commentId) ? -1 : 1)
+              }
             }
-          }
-          return comment
-        })
+            return comment
+          })
+        }
       })
       return updatedComments
     })
