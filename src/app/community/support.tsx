@@ -344,72 +344,74 @@ const handleCommentLike = (commentId: number) => {
     setNewPostDialogOpen(false)
   }
 
+// In support.tsx, update the first section:
+
 return (
     <>
       <div className="max-w-5xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <div className="bg-white rounded-2xl p-8 shadow-lg mb-6 border border-gray-100">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Guidelines for a Successful Post</h2>
-            <div className="space-y-4 text-gray-700">
-              <p>
-                Use this space if you require support related to Framer. For all code-related enquiries, use our <span className="font-semibold text-[#5b06be]">code</span> space instead & for anything Plugin related, use our <span className="font-semibold text-[#5b06be]">plugin</span> space.
+          {/* This is the guidelines card */}
+          <Card className="mb-6 bg-white shadow-lg">
+            <CardHeader>
+              <CardTitle>Guidelines for a Successful Post</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-700">
+                Use this space if you require support related to Framer. For all code-related enquiries, use our{' '}
+                <span className="text-[#5b06be] font-semibold">code</span> space instead & for anything Plugin related, use our{' '}
+                <span className="text-[#5b06be] font-semibold">plugin</span> space.
               </p>
-              <p>
+              <p className="text-gray-700">
                 Always search the help center and the community beforehand to ensure that the same issue hasn't already been solved.
               </p>
-              <p>
+              <p className="text-gray-700">
                 Please provide as many details as possible on your problem, expectations, what you tried, and other info that might help us narrow down the problem - include screenshots or screen recording if needed.
               </p>
-            </div>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="relative flex-grow">
-                <Input
-                  type="text"
-                  placeholder="Search topics..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 pr-4 py-3 w-full rounded-full border-2 border-gray-200 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                />
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-              </div>
-              <Select
-                value={sortBy}
-                onValueChange={(value: 'newest' | 'latest' | 'most-liked' | 'most-commented') => setSortBy(value)}
-              >
-                <SelectTrigger className="w-[180px] rounded-full flex items-center gap-2">
-                  <Image
-                    src="https://res.cloudinary.com/drkudvyog/image/upload/v1734400792/Sort_icon_duha_tpvska.png"
-                    alt="Sort"
-                    width={16}
-                    height={16}
+              <div className="flex items-center gap-4 mt-8">
+                <div className="relative flex-grow">
+                  <Input
+                    type="text"
+                    placeholder="Search topics..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-12 pr-4 py-3 w-full rounded-full border-2 border-gray-200 focus:border-[#5b06be] focus:ring-2 focus:ring-[#5b06be] focus:ring-opacity-50"
                   />
-                  <SelectValue placeholder="Newest" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="newest">
-                    <span>Newest</span>
-                  </SelectItem>
-                  <SelectItem value="latest">
-                    <span>Latest</span>
-                  </SelectItem>
-                  <SelectItem value="most-liked">
-                    <span>Most liked</span>
-                  </SelectItem>
-                  <SelectItem value="most-commented">
-                    <span>Most commented</span>
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              <Button
-                onClick={() => setNewPostDialogOpen(true)}
-                className="bg-[#5b06be] hover:bg-[#4a05a0] text-white rounded-full px-6 py-3 flex items-center space-x-2 transition duration-150 ease-in-out"
-              >
-                <Plus size={20} />
-                <span>Create New Post</span>
-              </Button>
-            </div>
-          </div>
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                </div>
+                <Select
+                  value={sortBy}
+                  onValueChange={(value: 'newest' | 'latest' | 'most-liked' | 'most-commented') => setSortBy(value)}
+                >
+                  <SelectTrigger className="w-[180px] rounded-full">
+                    <Image
+                      src="/api/placeholder/16/16"
+                      alt="Sort"
+                      width={16}
+                      height={16}
+                    />
+                    <SelectValue placeholder="Most liked" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="newest">Newest</SelectItem>
+                    <SelectItem value="latest">Latest</SelectItem>
+                    <SelectItem value="most-liked">Most liked</SelectItem>
+                    <SelectItem value="most-commented">Most commented</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Button
+                  onClick={() => setNewPostDialogOpen(true)}
+                  variant="purple"
+                  size="rounded"
+                  className="flex items-center gap-2"
+                >
+                  <Plus size={20} />
+                  <span>Create New Post</span>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
+        
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
           {filteredAndSortedTopics.map((topic, index) => (
             <div key={topic.id} className="group">
