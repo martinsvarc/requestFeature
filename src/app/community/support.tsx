@@ -357,65 +357,67 @@ return (
       <div className="max-w-5xl mx-auto px-4 py-8">
         <div className="mb-8">
           {/* This is the guidelines card */}
-          <Card className="mb-6 bg-white shadow-lg">
-            <CardHeader>
-              <CardTitle>Guidelines for a Successful Post</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-gray-700">
-                Use this space if you require support related to Framer. For all code-related enquiries, use our{' '}
-                <span className="text-[#5b06be] font-semibold">code</span> space instead & for anything Plugin related, use our{' '}
-                <span className="text-[#5b06be] font-semibold">plugin</span> space.
-              </p>
-              <p className="text-gray-700">
-                Always search the help center and the community beforehand to ensure that the same issue hasn't already been solved.
-              </p>
-              <p className="text-gray-700">
-                Please provide as many details as possible on your problem, expectations, what you tried, and other info that might help us narrow down the problem - include screenshots or screen recording if needed.
-              </p>
-              <div className="flex items-center gap-4 mt-8">
-                <div className="relative flex-grow">
-                  <Input
-                    type="text"
-                    placeholder="Search topics..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-12 pr-4 py-3 w-full rounded-full border-2 border-gray-200 focus:border-[#5b06be] focus:ring-2 focus:ring-[#5b06be] focus:ring-opacity-50"
-                  />
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                </div>
-                <Select
-                  value={sortBy}
-                  onValueChange={(value: 'newest' | 'latest' | 'most-liked' | 'most-commented') => setSortBy(value)}
-                >
-                  <SelectTrigger className="w-[180px] rounded-full">
-                    <Image
-                      src="/api/placeholder/16/16"
-                      alt="Sort"
-                      width={16}
-                      height={16}
-                    />
-                    <SelectValue placeholder="Most liked" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="newest">Newest</SelectItem>
-                    <SelectItem value="latest">Latest</SelectItem>
-                    <SelectItem value="most-liked">Most liked</SelectItem>
-                    <SelectItem value="most-commented">Most commented</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Button
-                  onClick={() => setNewPostDialogOpen(true)}
-                  variant="purple"
-                  size="rounded"
-                  className="flex items-center gap-2"
-                >
-                  <Plus size={20} />
-                  <span>Create New Post</span>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <Card>
+  <CardHeader>
+    <CardTitle>Guidelines for a Successful Post</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <div className="space-y-4 text-gray-700">
+      <p>
+        Use this space if you require support related to Framer. For all code-related enquiries, use our{' '}
+        <span className="font-semibold text-[#5b06be]">code</span> space instead & for anything Plugin related, use our{' '}
+        <span className="font-semibold text-[#5b06be]">plugin</span> space.
+      </p>
+      <p>
+        Always search the help center and the community beforehand to ensure that the same issue hasn't already been solved.
+      </p>
+      <p>
+        Please provide as many details as possible on your problem, expectations, what you tried, and other info that might help us narrow down the problem - include screenshots or screen recording if needed.
+      </p>
+    </div>
+    <div className="mt-8 flex items-center gap-4">
+      <div className="relative flex-grow">
+        <Input
+          type="text"
+          placeholder="Search topics..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="pl-12 pr-4 py-3 w-full rounded-full border-2 border-gray-200 focus:border-[#5b06be] focus:ring-2 focus:ring-[#5b06be] focus:ring-opacity-50"
+        />
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+      </div>
+      <Select
+        value={sortBy}
+        onValueChange={(value: 'newest' | 'latest' | 'most-liked' | 'most-commented') => setSortBy(value)}
+      >
+        <SelectTrigger className="w-[180px] rounded-full">
+          <Image
+            src="/api/placeholder/16/16"
+            alt="Sort"
+            width={16}
+            height={16}
+          />
+          <SelectValue placeholder="Most liked" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="newest">Newest</SelectItem>
+          <SelectItem value="latest">Latest</SelectItem>
+          <SelectItem value="most-liked">Most liked</SelectItem>
+          <SelectItem value="most-commented">Most commented</SelectItem>
+        </SelectContent>
+      </Select>
+      <Button
+        onClick={() => setNewPostDialogOpen(true)}
+        variant="purple"
+        size="rounded"
+        className="flex items-center gap-2"
+      >
+        <Plus size={20} />
+        <span>Create New Post</span>
+      </Button>
+    </div>
+  </CardContent>
+</Card>
         </div>
         
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
