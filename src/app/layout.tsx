@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} font-sans`}>
-      <body className={`${montserrat.variable} font-sans bg-gray-50 text-gray-900 antialiased`}>
+    <html lang="en" className={`${montserrat.variable}`}>
+      <body className={`min-h-screen bg-gray-50 font-sans antialiased`}>
         {children}
       </body>
     </html>
